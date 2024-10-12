@@ -1,0 +1,30 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "The unique identifier for an order"
+    readOnly: true
+  product:
+    $ref: "../product/order-product.yaml"
+  order_quantity:
+    type: integer
+    description: "The quantity of the product in the order"
+    minimum: 1
+    maximum: 10000
+    example: 1
+  ship_quantity:
+    type: integer
+    description: "The quantity of the product shipped"
+    minimum: 1
+    maximum: 10000
+    example: 1
+  dateCreated:
+    $ref: "../common/iso_timestamp.yaml"
+  dateUpdated:
+    $ref: "../common/iso_timestamp.yaml"
+required:
+  - product
+  - order_quantity
+
+

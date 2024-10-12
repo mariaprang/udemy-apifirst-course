@@ -1,0 +1,6 @@
+type: string
+format: date-time
+description: ISO 8601 timestamp
+example: "2021-07-01T00:00:00Z"
+title: ISO timestamp
+readOnly: true

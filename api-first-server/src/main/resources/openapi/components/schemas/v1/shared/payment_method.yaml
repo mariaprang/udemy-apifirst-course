@@ -1,0 +1,39 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "The unique identifier for a payment method"
+    readOnly: true
+  displayName:
+    type: string
+    description: "The display name of the payment method"
+    minLength: 2
+    maxLength: 100
+    example: "Visa"
+  cardNumber:
+    type: string
+    description: "The card number of the payment method"
+    example: "5111111111111111"
+  expiryMonth:
+    type: integer
+    description: "The expiry month of the payment method"
+    example: 12
+  expiryYear:
+    type: integer
+    description: "The expiry year of the payment method"
+    example: 2022
+  cvv:
+    type: string
+    description: "The CVV of the payment method"
+    example: "123"
+  dateCreated:
+    $ref: "../common/iso_timestamp.yaml"
+  dateUpdated:
+    $ref: "../common/iso_timestamp.yaml"
+required:
+  - displayName
+  - cardNumber
+  - expiryMonth
+  - expiryYear
+  - cvv

@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: Example API
+  termsOfService: https://example.com/terms/
+  contact:
+    name: Contact our support
+    email: contact@example.com
+    url: http://example.com/contact
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: 'https://redocly.github.io/openapi-template/logo.png'
+    altText: OpenAPI example logo
+  description: >
+    This is an **example** API to demonstrate features of the OpenAPI
+    specification.
+externalDocs:
+  description: "Find out how to create a GitHub repo for your OpenAPI definition."
+  url: 'https://github.com/Redocly/create-openapi-repo'
+tags:
+  - name: Customer
+    description: "Operations about customers."
+  - name: Products
+    description: "Operations about products."
+  - name: Order
+    description: "Operations about orders."
+servers:
+  - url: "{protocol}://{host}:{port}/{base-path}"
+    variables:
+      protocol:
+        default: 'https'
+      host:
+        default: 'localhost'
+      port:
+        default: '8080'
+      base-path:
+        default: 'api/v1'
+paths:
+  #  /users/{username}:
+  #    $ref: 'paths/users_{username}.yaml'
+  /v1/customers:
+    $ref: 'paths/v1/customers.yaml'
+  /v1/customers/{customer_id}:
+    $ref: 'paths/v1/customers_customerId.yaml'
+  /v1/products:
+    $ref: 'paths/v1/products.yaml'
+  /v1/products/{product_id}:
+    $ref: 'paths/v1/products_productId.yaml'
+  /v1/orders:
+    $ref: 'paths/v1/orders.yaml'
+  /v1/orders/{order_id}:
+    $ref: 'paths/v1/orders_orderId.yaml'
+security:
+  - basic_auth: [ ]
+components:
+  securitySchemes:
+    main_auth:
+      description: "Example description text of the OAuth2 scheme."
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://example.com/api/oauth/dialog
+          scopes:
+            'read:users': read user info
+            'write:users': modify or remove users
+    api_key:
+      description: "Example description text of the API key scheme."
+      type: apiKey
+      in: header
+      name: api_key
+    basic_auth:
+      type: http
+      scheme: basic

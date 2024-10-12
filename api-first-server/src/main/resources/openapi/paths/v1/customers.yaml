@@ -1,0 +1,52 @@
+get:
+  tags:
+    - Customer
+  summary: List all customers
+  description: Returns all customers from the system that the user has access to
+  operationId: listCustomers
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/v1/customer/customer-list.yaml"
+    '404':
+      description: No customers found
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Problem.yaml"
+
+post:
+  tags:
+    - Customer
+  summary: Create a new customer
+  description: Create a new customer
+  operationId: createCustomer
+  requestBody:
+    description: Customer object that needs to be added to the system
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/v1/customer/customer.yaml"
+  responses:
+    '201':
+      description: Created
+      headers:
+        Location:
+          description: The location of the created customer
+          schema:
+            type: string
+            format: uri
+            example: /v1/customers/1cbda426-fa2e-4e88-a256-d6104ccb32f6
+
+    '400':
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Problem.yaml"
+
+

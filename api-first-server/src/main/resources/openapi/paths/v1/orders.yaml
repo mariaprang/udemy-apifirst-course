@@ -1,0 +1,19 @@
+get:
+  tags:
+    - Order
+  summary: List all orders
+  description:  Returns all orders from the system that the user has access to
+  operationId: listOrders
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/v1/order/order-list.yaml"
+    '404':
+      description: No orders found
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Problem.yaml"

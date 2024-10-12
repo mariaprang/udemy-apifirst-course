@@ -1,0 +1,41 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "The unique identifier for a customer"
+    readOnly: true
+  addressLine1:
+    type: string
+    description: "The first line of the address"
+    minLength: 3
+    maxLength: 100
+    example: "123 Main St."
+  addressLine2:
+    type: string
+    description: "The second line of the address"
+    minLength: 3
+    maxLength: 100
+  city:
+    type: string
+    description: "The city of the address"
+    minLength: 2
+    maxLength: 100
+    example: "Anytown"
+  state:
+    type: string
+    description: "2 character zip code"
+    minLength: 2
+    maxLength: 2
+    example: "NY"
+  zipCode:
+    type: string
+    description: "The zip code of the address"
+    minLength: 5
+    maxLength: 10
+    example: "12345"
+required:
+  - addressLine1
+  - city
+  - state
+  - zipCode
