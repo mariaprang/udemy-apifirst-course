@@ -25,16 +25,16 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
         builder1.id(id);
 
-        if (entity.getBillToAddress() != null){
+        if (entity.getBillToAddress() != null) {
             builder1.billToAddress(Address.builder()
                 .id(UUID.randomUUID())
                 .addressLine1(entity.getBillToAddress().getAddressLine1())
                 .addressLine2(entity.getBillToAddress().getAddressLine2())
                 .city(entity.getBillToAddress().getCity())
                 .state(entity.getBillToAddress().getState())
-               // .zip(entity.getBillToAddress().getZip())
-                //.dateCreated(OffsetDateTime.now())
-                //.dateUpdated(OffsetDateTime.now())
+                .zipCode(entity.getBillToAddress().getZipCode())
+                .dateCreated(OffsetDateTime.now())
+                .dateUpdated(OffsetDateTime.now())
                 .build());
         }
 
@@ -45,9 +45,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 .addressLine2(entity.getShipToAddress().getAddressLine2())
                 .city(entity.getShipToAddress().getCity())
                 .state(entity.getShipToAddress().getState())
-                    //.zip(entity.getShipToAddress().getZip())
-                //.dateCreated(OffsetDateTime.now())
-                //.dateUpdated(OffsetDateTime.now())
+                .zipCode(entity.getShipToAddress().getZipCode())
+                .dateCreated(OffsetDateTime.now())
+                .dateUpdated(OffsetDateTime.now())
                 .build());
         }
 
@@ -81,9 +81,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public <S extends Customer> Iterable<S> saveAll(Iterable<S> entities) {
-       return StreamSupport.stream(entities.spliterator(), false)
-                .map(this::save)
-                .collect(Collectors.toList());
+        return StreamSupport.stream(entities.spliterator(), false)
+            .map(this::save)
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -104,10 +104,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public Iterable<Customer> findAllById(Iterable<UUID> uuids) {
         return StreamSupport.stream(uuids.spliterator(), false)
-                .map(this::findById)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toList());
+            .map(this::findById)
+            .filter(Optional::isPresent)
+            .map(Optional::get)
+            .collect(Collectors.toList());
     }
 
     @Override

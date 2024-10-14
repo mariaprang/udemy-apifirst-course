@@ -29,7 +29,7 @@ public class DataLoader implements CommandLineRunner {
             .city("Springfield")
             .state("IL")
             .zipCode("62701")
-            // .dateCreated(OffsetDateTime.now())
+            .dateCreated(OffsetDateTime.now())
             .build();
 
         Customer customer = Customer.builder()
@@ -41,10 +41,13 @@ public class DataLoader implements CommandLineRunner {
             .shipToAddress(address1)
             .billToAddress(address1)
             .email("johndoe@gmail.com")
+            .dateCreated(OffsetDateTime.now())
+            .dateUpdated(OffsetDateTime.now())
             .paymentMethods(List.of(PaymentMethod.builder()
                 .cardNumber("1234567890123456")
                 .expiryMonth(12)
                 .displayName("My Visa Card")
+                .cvv("123")
                 .build()))
             .build();
 
