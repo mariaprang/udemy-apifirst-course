@@ -1,4 +1,4 @@
-package udemy.springframework.apifirstserver.repositories;
+package udemy.springframework.apifirstserver.repositories.impl;
 
 import java.time.OffsetDateTime;
 import java.util.HashMap;
@@ -8,6 +8,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import org.springframework.stereotype.Repository;
+import udemy.springframework.apifirstserver.repositories.CustomerRepository;
 import udemy.springframework.model.Address;
 import udemy.springframework.model.Customer;
 import udemy.springframework.model.PaymentMethod;

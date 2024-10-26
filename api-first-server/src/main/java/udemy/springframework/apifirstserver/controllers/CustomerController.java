@@ -1,9 +1,11 @@
 package udemy.springframework.apifirstserver.controllers;
 
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import udemy.springframework.apifirstserver.services.CustomerService;
@@ -23,4 +25,8 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.listCustomers());
     }
 
+    @GetMapping("/{customerId}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable("customerId") UUID customerId){
+        return ResponseEntity.ok(customerService.getCustomerById(customerId));
+    }
 }

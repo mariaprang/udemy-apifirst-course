@@ -3,12 +3,12 @@ package udemy.springframework.apifirstserver.services;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
-import udemy.springframework.model.Customer;
+import udemy.springframework.model.Product;
 
 @Service
-public interface CustomerService {
+public interface ProductService {
 
-    List<Customer> listCustomers();
+    List<Product> listProducts();
 
-    Customer getCustomerById(UUID customerId);
+    Product getCustomerById(UUID customerId);
 }

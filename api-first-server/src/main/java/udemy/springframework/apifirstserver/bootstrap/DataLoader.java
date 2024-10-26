@@ -7,16 +7,22 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import udemy.springframework.apifirstserver.repositories.CustomerRepository;
+import udemy.springframework.apifirstserver.repositories.ProductRepository;
 import udemy.springframework.model.Address;
+import udemy.springframework.model.Category;
 import udemy.springframework.model.Customer;
+import udemy.springframework.model.Dimensions;
+import udemy.springframework.model.Image;
 import udemy.springframework.model.Name;
 import udemy.springframework.model.PaymentMethod;
+import udemy.springframework.model.Product;
 
 @Component
 @RequiredArgsConstructor
 public class DataLoader implements CommandLineRunner {
 
     private final CustomerRepository customerRepository;
+    private final ProductRepository productRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -51,6 +57,35 @@ public class DataLoader implements CommandLineRunner {
                 .build()))
             .build();
 
+        Dimensions dimensions = Dimensions.builder()
+            .length(10)
+            .width(10)
+            .height(10)
+            .description("Product Dimensions")
+            .build();
+
+        Category category = Category.builder()
+            .category("Electronics")
+            .description("Electronics Category")
+            .dateCreated(OffsetDateTime.now())
+            .dateUpdated(OffsetDateTime.now())
+            .build();
+
+        Image image = Image.builder()
+            .url("https://example.png").build();
+
+        Product product = Product.builder()
+            .id(UUID.randomUUID())
+            .title("Product 1")
+            .cost("10.0")
+            .price("20.0")
+            .dimensions(dimensions)
+            .categories(List.of(category))
+            .images(List.of(image))
+            .build();
+
+
+        productRepository.save(product);
         customerRepository.save(customer);
     }
 
