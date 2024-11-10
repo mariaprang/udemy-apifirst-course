@@ -20,10 +20,12 @@ import udemy.springframework.model.OrderProduct;
 import udemy.springframework.model.PaymentMethod;
 import udemy.springframework.model.Product;
 
-@Component
+/**
+ * Created by jt, Spring Framework Guru.
+ */
 @RequiredArgsConstructor
+@Component
 public class DataLoader implements CommandLineRunner {
-
 
     private final CustomerRepository customerRepository;
     private final ProductRepository productRepository;
@@ -190,5 +192,4 @@ public class DataLoader implements CommandLineRunner {
         orderRepository.save(order1);
         orderRepository.save(order2);
     }
-
 }

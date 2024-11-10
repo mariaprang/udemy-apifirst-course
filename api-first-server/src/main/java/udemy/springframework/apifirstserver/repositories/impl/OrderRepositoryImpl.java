@@ -8,13 +8,16 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import udemy.springframework.apifirstserver.repositories.OrderRepository;
 import udemy.springframework.model.Order;
 import udemy.springframework.model.OrderLine;
 
 /**
  * Created by jt, Spring Framework Guru.
  */
-public class OrderRepositoryImpl implements CrudRepository<Order, UUID> {
+@Repository
+public class OrderRepositoryImpl implements OrderRepository {
 
     private final Map<UUID, Order> entityMap = new HashMap<>();
 
